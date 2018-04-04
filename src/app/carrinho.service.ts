@@ -7,6 +7,7 @@ export class CarrinhoService {
     public itens: ItemCarrinho[] = []
 
     public exibirItens(): ItemCarrinho[] {
+        console.log(this.itens.length)
         return this.itens
     }
 
@@ -34,6 +35,34 @@ export class CarrinhoService {
         })
 
         return total
+    }
+
+    public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
+
+        // Incrementar Quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        if (itemCarrinhoEncontrado) {
+            itemCarrinhoEncontrado.quantidade += 1
+        }
+    }
+
+    public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
+
+        // Incrementar Quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        if (itemCarrinhoEncontrado) {
+
+            itemCarrinhoEncontrado.quantidade -= 1
+            if (itemCarrinhoEncontrado.quantidade === 0) {
+
+                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1)
+            }
+
+        }
+    }
+
+    public limparCarrinho(): void {
+        this.itens = []
     }
 
 }
