@@ -1,0 +1,43 @@
+<div class="fixed-top bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <a href="" class="navbar-brand">
+          <img class="img-fluid" src="/assets/logo.png" routerLink="" />
+        </a>
+      </div>
+      <div class="col-md-6">
+        <input #termoDaPesquisa type="text" class="form-control" placeholder="Pesquise por ofertas..." (keyup)="pesquisa(termoDaPesquisa.value)"
+        />
+        <ul class="list-group" style="position:absolute">
+          <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+            <a [routerLink]="['/oferta',oferta.id]" (click)=limpaPesquisa()>
+              {{oferta.titulo | descricaoReduzida:15}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <a a href="#">
+          <img class="img-fluid" src="/assets/carrinho.png" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/restaurantes">Restaurantes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/diversao">Diversão</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <img src="/assets/banners/img_1.jpg" />
+</div>
