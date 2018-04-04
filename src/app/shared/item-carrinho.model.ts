@@ -9,4 +9,4 @@ class ItemCarrinho {
         public quantidade: number) { }
 }
 
-export default ItemCarrinho
+export { ItemCarrinho }
